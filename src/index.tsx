@@ -1,7 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './style.css'
+import { ThemeProvider } from "@mui/material/styles"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { theme } from './Theme/theme'
 import { Home, Dashboard, SignIn } from './components';
 
 
@@ -10,6 +12,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <ThemeProvider theme={theme}>
     <Router>
       <Routes>
     <Route path ='/' element={<Home title={'Car inventory'}/>}/>
@@ -18,6 +21,7 @@ root.render(
     
     </Routes>
     </Router>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
