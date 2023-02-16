@@ -1,10 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './style.css'
 import { ThemeProvider } from "@mui/material/styles"
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { theme } from './Theme/theme'
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 import { Home, Dashboard, SignIn } from './components';
+import './style.css'
 
 
 const root = ReactDOM.createRoot(
@@ -12,6 +14,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <React.StrictMode>
+    <Provider store = {store}>
     <ThemeProvider theme={theme}>
     <Router>
       <Routes>
@@ -22,6 +25,7 @@ root.render(
     </Routes>
     </Router>
     </ThemeProvider>
+    </Provider>
   </React.StrictMode>
 );
 

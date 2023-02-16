@@ -11,13 +11,20 @@ import { Drawer as MUIDrawer,
     Divider,
     Button,
     CssBaseline, 
-    Box
+    Box,
+    Dialog,
+    DialogActions,
+    DialogContent,
+    DialogContentText,
+    DialogTitle
 } from "@mui/material";
 import MenuIcon from '@mui/icons-material/Menu';
 import { ChevronRight,ChevronLeft } from "@mui/icons-material";
 import { useNavigate } from "react-router-dom";
 import { theme } from "../../Theme/theme";
 import { DataTable } from '../DataTable';
+import { DroneForm } from '../DroneForm'; 
+
 
 const drawerWidth = 200;
 
@@ -101,7 +108,8 @@ const myStyles = {
 export const Dashboard = () => {
     
     const navigate = useNavigate();
-  const [open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false)
+  const [dialogOpen, setDialogOpen] = useState(false)
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -110,6 +118,14 @@ export const Dashboard = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const handleDialogOpen = () => {
+    setDialogOpen(true)
+  }
+
+  const handleDialogClose = () => {
+    setDialogOpen(false)
+  }
 
   const itemsList = [
     {
@@ -141,8 +157,21 @@ return (
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" noWrap> Galaxy Car Collection</Typography>
-            <Button sx={ myStyles.toolbarButton }>Custom or Purchase</Button>
+            <Typography variant="h6" noWrap> CarInventory</Typography>
+            <Button sx={ myStyles.toolbarButton } onClick={handleDialogOpen}>Custom or Purchase</Button>
+
+            {/* Dialog Pop up for Create a new Drone */}
+            <Dialog open={dialogOpen} onClose={handleDialogClose} aria-labelledby="form-dialog-title">
+              <DialogTitle id="form-dialog-title">Add A Car</DialogTitle>
+                <DialogContent>
+                  <DialogContentText>Add A New Car</DialogContentText>
+                      <DroneForm/>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick = {handleDialogClose} color="primary">Cancel</Button>
+                </DialogActions>
+                </Dialog>
+
           </Toolbar>
         </AppBar>
         <MUIDrawer
@@ -174,7 +203,7 @@ return (
           <Box sx={ myStyles.drawerHeader }/>
   
           <DataTable />
-          <h1>Discover a world of exquisite automobiles and timeless classics with our car collection company.</h1>
+          <h1></h1>
           {/* <DataTable /> We will add this shortly*/}
          
         </Box>

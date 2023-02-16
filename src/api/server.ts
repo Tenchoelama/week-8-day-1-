@@ -1,9 +1,9 @@
-let token = `YOUR_API_TOKEN_HERE`
+let token = `398994c4653781b74742caff096cb0328fdb43317f9627da`
 
 
 export const serverCalls = {
     get: async () => {
-        const response = await fetch(`YOUR-URL-HERE`,{
+        const response = await fetch(`https://poised-pond-ixora.glitch.me/api/drones`,{
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -19,7 +19,7 @@ export const serverCalls = {
     },
 
     create: async(data: any = {}) => {
-        const response = await fetch(`YOUR-URL-HERE`,{
+        const response = await fetch(`https://poised-pond-ixora.glitch.me/api/drones`,{
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -35,7 +35,7 @@ export const serverCalls = {
         return await response.json()
     },
     update: async (id:string, data:any = {}) => {
-        const response = await fetch(`YOUR-URL-HERE/${id}`, {
+        const response = await fetch(`https://poised-pond-ixora.glitch.me/api/drones/${id}`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -45,7 +45,7 @@ export const serverCalls = {
         });
     },
     delete: async(id:string) => {
-        const response = await fetch(`YOUR-URL-HERE/${id}`,{
+        const response = await fetch(`https://poised-pond-ixora.glitch.me/api/drones/${id}`,{
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json',
